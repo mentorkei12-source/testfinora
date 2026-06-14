@@ -1,0 +1,17 @@
+{
+  "nav": { "home": "Home", "plans": "Plans", "login": "Login", "register": "Register", "dashboard": "Dashboard", "logout": "Logout" },
+  "hero": { "title": "Invest Smart, Earn Daily", "subtitle": "Join thousands of Burundians growing their wealth with Finora FX. Safe, transparent, and profitable daily returns.", "cta": "Start Investing", "learnMore": "Learn More" },
+  "stats": { "users": "Active Investors", "paid": "Total Paid Out", "plans": "Investment Plans", "uptime": "Platform Uptime" },
+  "vip": { "title": "Investment Plans", "subtitle": "Choose the plan that fits your goals. All plans earn daily profits credited directly to your wallet.", "perDay": "/day", "invest": "Invest Now", "price": "Investment" },
+  "how": { "title": "How It Works", "step1": "Register", "step1Desc": "Create your free account in minutes. No KYC required.", "step2": "Deposit", "step2Desc": "Fund your wallet via mobile money. Upload your payment proof.", "step3": "Choose Plan", "step3Desc": "Select a VIP plan that fits your investment goals.", "step4": "Earn Daily", "step4Desc": "Receive automatic daily profits directly to your wallet." },
+  "referral": { "title": "Earn More by Referring", "subtitle": "Share your unique referral link and earn commissions on every deposit your team makes.", "level1": "Level 1 Commission", "level2": "Level 2 Commission", "cta": "Get Your Referral Link" },
+  "faq": { "title": "Frequently Asked Questions" },
+  "auth": { "login": "Login", "register": "Create Account", "phone": "Phone Number", "password": "Password", "fullName": "Full Name", "username": "Username", "referralCode": "Referral Code (Optional)", "loginBtn": "Sign In", "registerBtn": "Create Account", "noAccount": "Don't have an account?", "haveAccount": "Already have an account?", "forgotPassword": "Forgot password?" },
+  "dashboard": { "wallet": "Wallet Balance", "todayEarnings": "Today's Earnings", "totalEarnings": "Total Earnings", "referralEarnings": "Referral Earnings", "activePlan": "Active Plan", "noPlan": "No active plan", "team": "Team Size", "deposit": "Deposit", "withdraw": "Withdraw", "buyPlan": "Buy Plan", "transactions": "Transactions", "referrals": "My Referrals" },
+  "deposit": { "title": "Make a Deposit", "amount": "Amount (FBu)", "proof": "Upload Payment Proof", "submit": "Submit Deposit", "instructions": "Deposit Instructions", "history": "Deposit History" },
+  "withdrawal": { "title": "Request Withdrawal", "amount": "Amount (FBu)", "phone": "Mobile Money Number", "submit": "Request Withdrawal", "history": "Withdrawal History", "min": "Minimum withdrawal" },
+  "status": { "pending": "Pending", "approved": "Approved", "rejected": "Rejected", "completed": "Completed", "active": "Active" },
+  "common": { "loading": "Loading...", "save": "Save", "cancel": "Cancel", "edit": "Edit", "delete": "Delete", "confirm": "Confirm", "back": "Back", "currency": "FBu", "noData": "No data available" },
+  "admin": { "dashboard": "Dashboard", "users": "Users", "vipPlans": "VIP Plans", "deposits": "Deposits", "withdrawals": "Withdrawals", "settings": "Settings", "announcements": "Announcements", "auditLogs": "Audit Logs", "approve": "Approve", "reject": "Reject", "complete": "Complete" },
+  "whatsapp": { "joinGroup": "Join WhatsApp Community", "support": "WhatsApp Support", "groupDesc": "Connect with thousands of investors in our community group.", "supportDesc": "Get instant help from our support team on WhatsApp." }
+}
