@@ -13,7 +13,7 @@ const vipController = require('./controllers/vipController');
 const settingsController = require('./controllers/settingsController');
 const { startCronJobs } = require('./services/cronService');
 
-const app = express();
+const app = express();app.set('trust proxy', 1);
 
 // Ensure uploads directory exists
 const uploadDir = process.env.UPLOAD_DIR || 'uploads';
