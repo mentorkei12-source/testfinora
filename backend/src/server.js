@@ -22,7 +22,7 @@ if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
 // Middleware
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'https://testfinorafroonted.onrender.com'
+  origin: ['http://localhost:3000', 'https://testfinorafroonted.onrender.com'] ,
   credentials: true
 }));
 app.use(express.json({ limit: '10mb' }));
