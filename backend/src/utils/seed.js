@@ -15,19 +15,20 @@ const seed = async () => {
       ON CONFLICT (email) DO NOTHING
     `, [process.env.ADMIN_EMAIL || 'admin@finora.com', hashedPassword]);
 
-    // Seed VIP plans
+    // Clear and reseed VIP plans
+    await client.query('DELETE FROM vip_plans');
+
     const vipPlans = [
-      { name: 'VIP 1', price: 20000, daily_profit: 1000, sort_order: 1 },
-      { name: 'VIP 2', price: 50000, daily_profit: 3000, sort_order: 2 },
-      { name: 'VIP 3', price: 100000, daily_profit: 7000, sort_order: 3 },
-      { name: 'VIP 4', price: 200000, daily_profit: 15000, sort_order: 4 },
+      { name: 'VIP 1', price: 50000, daily_profit: 2000, sort_order: 1 },
+      { name: 'VIP 2', price: 100000, daily_profit: 3500, sort_order: 2 },
+      { name: 'VIP 3', price: 200000, daily_profit: 10000, sort_order: 3 },
+      { name: 'VIP 4', price: 400000, daily_profit: 15000, sort_order: 4 },
     ];
 
     for (const plan of vipPlans) {
       await client.query(`
         INSERT INTO vip_plans (name, price, daily_profit, sort_order)
         VALUES ($1, $2, $3, $4)
-        ON CONFLICT DO NOTHING
       `, [plan.name, plan.price, plan.daily_profit, plan.sort_order]);
     }
 
