@@ -9,7 +9,7 @@ export default function LoginPage() {
   const { t } = useTranslation();
   const { loginUser } = useAuth();
   const navigate = useNavigate();
-  const [form, setForm] = useState({ phone: '', password: '' });
+  const [form, setForm] = useState({ identifier: '', password: '' });
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {

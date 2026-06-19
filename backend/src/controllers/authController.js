@@ -79,11 +79,11 @@ const register = async (req, res) => {
 // POST /api/auth/login
 const login = async (req, res) => {
   try {
-    const { phone, password } = req.body;
-    const result = await pool.query(
-      'SELECT * FROM users WHERE phone = $1',
-      [phone]
-    );
+    const { identifier, password } = req.body;
+const result = await pool.query(
+  'SELECT * FROM users WHERE phone = $1 OR email = $1 OR username = $1',
+  [identifier]
+);
     const user = result.rows[0];
 
     if (!user || !(await bcrypt.compare(password, user.password))) {
