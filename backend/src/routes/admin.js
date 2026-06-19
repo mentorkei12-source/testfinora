@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-const pool = require('../config/database');
+const pool = require('../../config/database');
 const { authenticateAdmin } = require('../middleware/auth');
 const { adminGetPlans, createPlan, updatePlan, deletePlan } = require('../controllers/vipController');
 const { adminGetDeposits, processDeposit } = require('../controllers/depositController');
