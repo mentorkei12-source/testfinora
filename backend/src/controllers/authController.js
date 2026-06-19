@@ -19,7 +19,8 @@ const register = async (req, res) => {
 
     // Check existing user
     const existing = await client.query(
-     'SELECT * FROM users WHERE phone = $1 OR username = $1',
+      'SELECT id FROM users WHERE username = $1 OR phone = $2',
+      [username, phone]
     );
     if (existing.rows.length > 0) {
       return res.status(400).json({ message: 'Username or phone already exists' });
@@ -79,9 +80,10 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   try {
     const { identifier, password } = req.body;
-const result = await pool.query(
-  'SELECT * FROM users WHERE phone = $1 OR username = $1',
-);
+    const result = await pool.query(
+      'SELECT * FROM users WHERE phone = $1 OR username = $1',
+      [identifier]
+    );
     const user = result.rows[0];
 
     if (!user || !(await bcrypt.compare(password, user.password))) {
