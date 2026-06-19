@@ -80,8 +80,7 @@ const login = async (req, res) => {
   try {
     const { identifier, password } = req.body;
 const result = await pool.query(
-  'SELECT * FROM users WHERE phone = $1 OR email = $1 OR username = $1',
-  [identifier]
+  'SELECT * FROM users WHERE phone = $1 OR username = $1',
 );
     const user = result.rows[0];
 
