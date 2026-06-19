@@ -19,8 +19,8 @@ const register = async (req, res) => {
 
     // Check existing user
     const existing = await client.query(
-      'SELECT id FROM users WHERE username = $1 OR phone = $2',
-      [username, phone]
+      'SELECT id FROM users WHERE username = $1 , phone = $2 or email = $3',
+      [username, phone or email]
     );
     if (existing.rows.length > 0) {
       return res.status(400).json({ message: 'Username or phone already exists' });
