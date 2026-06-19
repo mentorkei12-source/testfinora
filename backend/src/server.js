@@ -13,7 +13,8 @@ const vipController = require('./controllers/vipController');
 const settingsController = require('./controllers/settingsController');
 const { startCronJobs } = require('./services/cronService');
 
-const app = express();app.set('trust proxy', 1);
+const app = express();
+app.set('trust proxy', 1);
 
 // Ensure uploads directory exists
 const uploadDir = process.env.UPLOAD_DIR || 'uploads';
@@ -22,7 +23,7 @@ if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
 // Middleware
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://testfinorafroonted.onrender.com'] ,
+  origin: ['http://localhost:3000', 'https://testfinorafroonted.onrender.com'],
   credentials: true
 }));
 app.use(express.json({ limit: '10mb' }));
@@ -31,8 +32,10 @@ app.use(express.urlencoded({ extended: true }));
 // Rate limiting
 const limiter = rateLimit({
   windowMs: parseInt(process.env.RATE_LIMIT_WINDOW || 15) * 60 * 1000,
-  max: parseInt(process.env.RATE_LIMIT_MAX || 100),
-  message: { message: 'Too many requests, please try again later.' }
+  max: parseInt(process.env.RATE_LIMIT_MAX || 1000),
+  message: { message: 'Too many requests, please try again later.' },
+  standardHeaders: true,
+  legacyHeaders: false,
 });
 app.use('/api', limiter);
 
