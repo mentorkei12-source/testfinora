@@ -43,9 +43,9 @@ export default function LoginPage() {
         <div className="card">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-[#1E293B] mb-2">{t('auth.phone')}</label>
-              <input type="tel" className="input" placeholder="+257 XX XXX XXX"
-                value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} required />
+              <label className="block text-sm font-medium text-[#1E293B] mb-2">Téléphone, Email ou Nom d'utilisateur</label>
+<input type="text" className="input" placeholder="Téléphone, Email ou Nom d'utilisateur"
+  value={form.identifier} onChange={e => setForm({ ...form, identifier: e.target.value })} required />
             </div>
             <div>
               <label className="block text-sm font-medium text-[#1E293B] mb-2">{t('auth.password')}</label>
