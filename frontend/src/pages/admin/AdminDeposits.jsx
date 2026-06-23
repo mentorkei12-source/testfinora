@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { adminAPI } from '../../services/api';
 
+const API_URL = import.meta.env.VITE_API_URL || '';
+
 // ===================== ADMIN DEPOSITS =====================
 export function AdminDeposits() {
   const [deposits, setDeposits] = useState([]);
@@ -38,7 +40,7 @@ export function AdminDeposits() {
                 <tr key={d.id} className="hover:bg-[#F8FAFC]">
                   <td className="py-3 px-4"><div className="font-medium text-[#1E293B]">{d.full_name}</div><div className="text-xs text-slate-400">{d.phone}</div></td>
                   <td className="py-3 px-4 font-bold text-[#1E293B]">{Number(d.amount).toLocaleString()} FBu</td>
-                  <td className="py-3 px-4">{d.proof_image ? <a href={`/uploads/${d.proof_image}`} target="_blank" rel="noopener" className="text-primary-600 hover:underline text-xs">Voir preuve</a> : '—'}</td>
+                  <td className="py-3 px-4">{d.proof_image ? <a href={`${API_URL}/uploads/${d.proof_image}`} target="_blank" rel="noopener" className="text-primary-600 hover:underline text-xs">Voir preuve</a> : '—'}</td>
                   <td className="py-3 px-4 text-slate-500">{new Date(d.created_at).toLocaleDateString('fr-FR')}</td>
                   <td className="py-3 px-4">
                     {d.status === 'pending' ? (
