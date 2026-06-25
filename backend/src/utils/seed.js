@@ -8,7 +8,7 @@ const seed = async () => {
     await client.query('BEGIN');
 
     // Seed admin
-    const hashedPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD || 'Admin@1111', 12);
+    const hashedPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD || 'Admin@123456', 12);
     await client.query(`
       INSERT INTO admins (name, email, password, role)
       VALUES ('Super Admin', $1, $2, 'superadmin')
