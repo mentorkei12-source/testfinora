@@ -43,9 +43,9 @@ const purchasePlan = async (req, res) => {
     // Deactivate existing plan
     await client.query('UPDATE user_vips SET is_active = false WHERE user_id = $1', [userId]);
 
-    // Create new active plan
+    // Create new active plan - fixed 180 days duration
     const endDate = new Date();
-    endDate.setDate(endDate.getDate() + plan.duration_days);
+    endDate.setDate(endDate.getDate() + 180);
 
     await client.query(
       `INSERT INTO user_vips (user_id, vip_plan_id, purchase_price, daily_profit, end_date)
