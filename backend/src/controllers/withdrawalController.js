@@ -15,11 +15,11 @@ const createWithdrawal = async (req, res) => {
     const settings = {};
     settingsResult.rows.forEach(r => { settings[r.key] = parseFloat(r.value); });
 
-    if (parseFloat(amount) < (settings.min_withdrawal || 10000))
-      return res.status(400).json({ message: `Minimum withdrawal is ${settings.min_withdrawal || 10000} FBu` });
+    if (parseFloat(amount) < (settings.min_withdrawal || 30000))
+      return res.status(400).json({ message: `Minimum withdrawal is ${settings.min_withdrawal || 30000} FBu` });
 
-    if (parseFloat(amount) > (settings.max_withdrawal || 5000000))
-      return res.status(400).json({ message: `Maximum withdrawal is ${settings.max_withdrawal || 5000000} FBu` });
+    if (parseFloat(amount) > (settings.max_withdrawal || 500000))
+      return res.status(400).json({ message: `Maximum withdrawal is ${settings.max_withdrawal || 500000} FBu` });
 
     const userResult = await client.query('SELECT wallet_balance FROM users WHERE id = $1', [userId]);
     if (parseFloat(userResult.rows[0].wallet_balance) < parseFloat(amount))
