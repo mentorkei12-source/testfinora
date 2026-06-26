@@ -7,7 +7,7 @@ const { adminGetPlans, createPlan, updatePlan, deletePlan } = require('../contro
 const { adminGetDeposits, processDeposit } = require('../controllers/depositController');
 const { adminGetWithdrawals, processWithdrawal } = require('../controllers/withdrawalController');
 const { getUsers, getUser, updateUser, adjustBalance, resetUserPassword, getDashboardStats } = require('../controllers/adminController');
-const { getAllSettings, updateSettings, createAnnouncement, updateAnnouncement, deleteAnnouncement, getAuditLogs } = require('../controllers/settingsController');
+const { getAllSettings, updateSettings, createAnnouncement, updateAnnouncement, deleteAnnouncement, getAuditLogs, getAnnouncements } = require('../controllers/settingsController');
 
 // Setup route - no auth required
 router.post('/setup', async (req, res) => {
@@ -56,6 +56,7 @@ router.get('/settings', getAllSettings);
 router.put('/settings', updateSettings);
 
 // Announcements
+router.get('/announcements', getAnnouncements);
 router.post('/announcements', createAnnouncement);
 router.put('/announcements/:id', updateAnnouncement);
 router.delete('/announcements/:id', deleteAnnouncement);
