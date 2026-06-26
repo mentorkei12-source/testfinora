@@ -8,12 +8,12 @@ const seed = async () => {
     await client.query('BEGIN');
 
     // Seed admin
-    const hashedPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD || 'Admin@123456', 12);
+    const hashedPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD || 'Admin@257', 12);
     await client.query(`
       INSERT INTO admins (name, email, password, role)
       VALUES ('Super Admin', $1, $2, 'superadmin')
       ON CONFLICT (email) DO NOTHING
-    `, [process.env.ADMIN_EMAIL || 'admin@finora.com', hashedPassword]);
+    `, [process.env.ADMIN_EMAIL || 'admin@fxfinora257.com', hashedPassword]);
 
     // Seed VIP plans only if table is empty
     const existing = await client.query('SELECT COUNT(*) FROM vip_plans');
