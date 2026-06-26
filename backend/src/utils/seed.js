@@ -23,6 +23,8 @@ const seed = async () => {
         { name: 'VIP 2', price: 100000, daily_profit: 3500, duration_days: 180, sort_order: 2 },
         { name: 'VIP 3', price: 200000, daily_profit: 10000, duration_days: 180, sort_order: 3 },
         { name: 'VIP 4', price: 400000, daily_profit: 15000, duration_days: 180, sort_order: 4 },
+        { name: 'VIP 5', price: 600000, daily_profit: 24000, duration_days: 180, sort_order: 5 },
+        { name: 'VIP 6', price: 800000, daily_profit: 32000, duration_days: 180, sort_order: 6 },
       ];
       for (const plan of vipPlans) {
         await client.query(`
