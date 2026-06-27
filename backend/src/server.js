@@ -23,11 +23,17 @@ if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
 // Middleware
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 app.use(cors({
-  origin: ['http://localhost:3000','https://www.finorafx.site'],
+  origin: ['http://localhost:3000', 'https://finorafx.site', 'https://www.finorafx.site','testfinorafroonted.onrender.com'],
   credentials: true
 }));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
+
+// Disable caching for all API routes
+app.use('/api', (req, res, next) => {
+  res.set('Cache-Control', 'no-store');
+  next();
+});
 
 // Rate limiting
 const limiter = rateLimit({
