@@ -13,8 +13,11 @@ export default function UserVipPlans() {
   const [purchasing, setPurchasing] = useState(null);
 
   useEffect(() => {
-    publicAPI.vipPlans().then(r => setPlans(r.data));
-    userAPI.vipActive().then(r => setActivePlan(r.data.find(v => v.is_active))).catch(() => {});
+    publicAPI.vipPlans().then(r => setPlans(Array.isArray(r.data) ? r.data : [])).catch(() => setPlans([]));
+    userAPI.vipActive().then(r => {
+      const data = Array.isArray(r.data) ? r.data : [];
+      setActivePlan(data.find(v => v.is_active) || null);
+    }).catch(() => setActivePlan(null));
   }, []);
 
   const handlePurchase = async (plan) => {
@@ -24,7 +27,9 @@ export default function UserVipPlans() {
       const { data } = await userAPI.purchaseVip(plan.id);
       toast.success(data.message);
       updateUser({ wallet_balance: data.new_balance });
-      const r = await userAPI.vipActive(); setActivePlan(r.data.find(v => v.is_active));
+      const r = await userAPI.vipActive();
+      const data2 = Array.isArray(r.data) ? r.data : [];
+      setActivePlan(data2.find(v => v.is_active) || null);
     } catch (err) { toast.error(err.response?.data?.message || 'Erreur'); }
     finally { setPurchasing(null); }
   };

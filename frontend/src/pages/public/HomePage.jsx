@@ -255,8 +255,8 @@ export default function HomePage() {
   const [settings, setSettings] = useState({});
 
   useEffect(() => {
-    publicAPI.vipPlans().then(r => setPlans(r.data)).catch(() => {});
-    publicAPI.settings().then(r => setSettings(r.data)).catch(() => {});
+    publicAPI.vipPlans().then(r => setPlans(Array.isArray(r.data) ? r.data : [])).catch(() => setPlans([]));
+    publicAPI.settings().then(r => setSettings(r.data || {})).catch(() => setSettings({}));
   }, []);
 
   return (
